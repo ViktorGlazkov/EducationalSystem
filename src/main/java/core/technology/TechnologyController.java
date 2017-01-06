@@ -11,10 +11,10 @@ public class TechnologyController {
     @Autowired
     TechnologyService technologyService;
 
-    @RequestMapping(value = {"/", "/technologys"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/technologies"}, method = RequestMethod.GET)
     @ResponseBody
     public List<Technology> getTechnologys() {
-        return technologyService.getTechnologys();
+        return technologyService.getTechnologies();
     }
 
     @RequestMapping(value = {"/technology"}, method = RequestMethod.POST)

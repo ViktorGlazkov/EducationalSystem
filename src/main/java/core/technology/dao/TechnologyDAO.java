@@ -5,7 +5,7 @@ import core.technology.Technology;
 import java.util.List;
 
 public interface TechnologyDAO {
-    List<Technology> getTechnologys();
+    List<Technology> getTechnologies();
 
     void createTechnology(Technology technology);
 

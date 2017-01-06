@@ -18,7 +18,7 @@ public class TechnologyDAOImpl implements TechnologyDAO {
     SessionFactory sessionFactory;
 
     @Override
-    public List<Technology> getTechnologys() {
+    public List<Technology> getTechnologies() {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("from Technology").list();
     }
