@@ -9,7 +9,7 @@ import org.springframework.core.io.ClassPathResource;
 
 @Configuration
 @ComponentScan(basePackages = {"core", "config"})
-@Import({HibernateConfig.class})
+@Import({DatabaseConfig.class})
 public class ApplicationConfig {
 
     @Bean
