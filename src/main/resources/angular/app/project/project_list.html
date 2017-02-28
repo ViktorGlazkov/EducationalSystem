@@ -1,0 +1,13 @@
+<md-content>
+    <div class="well" ng-repeat="project in vm.projects">
+        <a href="/#/project/{{project.id}}" class="col-md-8">{{project.name}}</a>
+        <a>{{project.id}}</a>
+        <button type="button" class="btn btn-danger col-md-3" ng-click="deleteProject(project)">Remove</button>
+    </div>
+
+    <form ng-submit="createNewProject(name)">
+        First name:<br>
+        <input ng-model="name" type="text" name="firstname">
+        <input type="submit" value="Submit">
+    </form>
+</md-content>
