@@ -1,26 +1,41 @@
-<!--<form ng-submit="createNewTechnology(name, selectedName)">-->
-<!--Name:<br>-->
-<!--<input ng-model="name" type="text">-->
-<!--<br>-->
-<!--<select class="dropdown btn btn-primary dropdown-toggle" ng-model="selectedName" ng-options="language.name for language in languages">-->
-<!--</select>-->
-
-<!--<input type="submit" value="Submit">-->
-
-
-<!--</form>-->
-
 <md-dialog aria-label="List dialog">
-    <md-dialog-content>
-        <md-list>
-            <md-list-item ng-repeat="language in languages">
-                <p>{{language}}</p>
-            </md-list-item>
-        </md-list>
-    </md-dialog-content>
-    <md-dialog-actions>
-        <md-button ng-click="closeDialog()" class="md-primary">
-            Close Dialog
-        </md-button>
-    </md-dialog-actions>
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Create new technology</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="vm.cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <md-input-container>
+                    <label>Name of technology</label>
+                    <input ng-model="vm.name">
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Language</label>
+                    <md-select ng-model="vm.selectedLanguage">
+                        <md-option><em>None</em></md-option>
+                        <md-option ng-repeat="language in vm.languages" ng-value="language" ng-disabled="$index === 1">
+                            {{language.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button ng-click="vm.cancel()">
+                Cancel
+            </md-button>
+            <md-button ng-click="vm.create()" class="md-primary">
+                Create
+            </md-button>
+        </md-dialog-actions>
+    </form>
 </md-dialog>
