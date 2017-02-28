@@ -11,8 +11,7 @@ public class ProjectController {
     @Autowired
     ProjectService projectService;
 
-    @RequestMapping(value = {"/", "/projects"}, method = RequestMethod.GET)
-    @ResponseBody
+    @RequestMapping(value = {"/projects"}, method = RequestMethod.GET)
     public List<Project> getProjects() {
         return projectService.getProjects();
     }
@@ -23,8 +22,8 @@ public class ProjectController {
     }
 
     @RequestMapping(value = {"/project/{id}"}, method = RequestMethod.GET)
-    public void readProject(@PathVariable Long id) {
-        projectService.getProject(id);
+    public Project readProject(@PathVariable Long id) {
+        return projectService.getProject(id);
     }
 
     @RequestMapping(value = {"/project"}, method = RequestMethod.PUT)
