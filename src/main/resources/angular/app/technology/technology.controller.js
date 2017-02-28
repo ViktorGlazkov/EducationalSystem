@@ -22,15 +22,11 @@ angular.module('technology').controller('technologyController',
                     templateUrl: 'app/technology/technology_creator.html',
                     parent: angular.element(document.body),
                     targetEvent: ev,
-                    locals: {
-                        languages: vm.languages
-                    },
                     clickOutsideToClose: true
                 })
-                    .then(function (answer) {
-                        vm.status = 'You said the information was "' + answer + '".';
+                    .then(function () {
+                        vm.getAllTechnologies();
                     }, function () {
-                        vm.status = 'You cancelled the dialog.';
                     });
             }
 
