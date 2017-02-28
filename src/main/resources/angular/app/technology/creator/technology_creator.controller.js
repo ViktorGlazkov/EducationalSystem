@@ -3,10 +3,32 @@ angular.module('technology').controller('technologyCreatorController',
         function ($routeParams, $mdDialog, languageService, technologyService) {
 
             var vm = this;
+            vm.name = '';
+            vm.languages = '';
+            vm.selectedLanguage = '';
+
             vm.getLanguages = getLanguages;
-            vm.createNewTechnology = createNewTechnology;
-            vm.showAlert = showAlert;
+            vm.create = create;
             vm.closeDialog = closeDialog;
+            vm.hide = hide;
+            vm.cancel = cancel;
+            vm.answer = answer;
+
+            function hide() {
+                $mdDialog.hide();
+            }
+
+            function cancel() {
+                $mdDialog.cancel();
+            }
+
+            function answer(answer) {
+                $mdDialog.hide(answer);
+            }
+
+            function closeDialog() {
+                $mdDialog.hide();
+            }
 
             function getLanguages() {
                 languageService.getAllLanguages().then(
@@ -16,38 +38,17 @@ angular.module('technology').controller('technologyCreatorController',
                 );
             }
 
-            function createNewTechnology(name, language) {
+            function create() {
                 var technology = {
-                    name: name,
-                    language: language
+                    name: vm.name,
+                    language: {
+                        id: vm.selectedLanguage.id
+                    }
                 };
                 technologyService.createNewTechnology(technology).then(
-                    function () {
-                        vm.getAllTechnologies();
-                    }
-                );
-            }
+                    answer()
+                )
 
-            function showAlert(ev) {
-                var confirm = $mdDialog.confirm()
-                    .title('Would you like to delete your debt?')
-                    .textContent('All of the banks have agreed to forgive you your debts.')
-                    .ariaLabel('Lucky day')
-                    .targetEvent(ev)
-                    .ok('Please do it!')
-                    .cancel('Sounds like a scam');
-
-                $mdDialog.show(confirm).then(function() {
-                    vm.status = 'You decided to get rid of your debt.';
-                }, function() {
-                    vm.status = 'You decided to keep your debt.';
-                });
-            }
-
-
-
-            function closeDialog() {
-                $mdDialog.hide();
             }
 
             vm.getLanguages();
