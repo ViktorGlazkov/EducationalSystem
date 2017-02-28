@@ -13,7 +13,7 @@ public class TechnologyController {
 
     @RequestMapping(value = {"/", "/technologies"}, method = RequestMethod.GET)
     @ResponseBody
-    public List<Technology> getTechnologys() {
+    public List<Technology> getTechnologies() {
         return technologyService.getTechnologies();
     }
 
