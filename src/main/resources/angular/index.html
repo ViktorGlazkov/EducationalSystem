@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <base href='/'>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="bower_components/underscore/underscore.js"></script>
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+
+    <script src="bower_components/svg-assets-cache.js/svg-assets-cache.js"></script>
+
+    <script src="app/app.js"></script>
+
+    <script src="app/project/project.module.js"></script>
+    <script src="app/project/project.controller.js"></script>
+    <script src="app/project/project.service.js"></script>
+    <script src="app/project/project_details.controller.js"></script>
+
+    <script src="app/language/language.module.js"></script>
+    <script src="app/language/language.controller.js"></script>
+    <script src="app/language/language.service.js"></script>
+    <script src="app/language/language_details.controller.js"></script>
+
+    <script src="app/technology/technology.module.js"></script>
+    <script src="app/technology/technology.controller.js"></script>
+    <script src="app/technology/technology.service.js"></script>
+    <script src="app/technology/technology_details.controller.js"></script>
+    <script src="app/technology/creator/technology_creator.controller.js"></script>
+    <script src="app/technology/creator/technology_creator.directive.js"></script>
+</head>
+<body ng-app='app'>
+<md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+    <md-nav-bar md-selected-nav-item="Languages" nav-bar-aria-label="navigation links">
+        <md-nav-item md-nav-href="#/languages" name="page1">
+            Languages
+        </md-nav-item>
+        <md-nav-item md-nav-href="#/technologies" name="page2">
+            Technologies
+        </md-nav-item>
+        <md-nav-item md-nav-href="#/projects" name="page3">
+            Projects
+        </md-nav-item>
+    </md-nav-bar>
+</md-content>
+<div ng-view></div>
+</body>
+</html>
