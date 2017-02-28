@@ -23,8 +23,8 @@ public class TechnologyController {
     }
 
     @RequestMapping(value = {"/technology/{id}"}, method = RequestMethod.GET)
-    public void readTechnology(@PathVariable Long id) {
-        technologyService.getTechnology(id);
+    public Technology readTechnology(@PathVariable Long id) {
+        return technologyService.getTechnology(id);
     }
 
     @RequestMapping(value = {"/technology"}, method = RequestMethod.PUT)
