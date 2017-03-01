@@ -1,4 +1,12 @@
-<div>
+<md-content layout="column">
     <span>{{vm.language.id}}</span>
     <span>{{vm.language.name}}</span>
-</div>
+
+    <md-list flex="">
+        <md-list-item class="md-1-line" ng-repeat="technology in vm.language.technologies">
+            <div class="md-list-item-text" layout="column">
+                <a href="/#/technology/{{technology.id}}/projects">{{technology.name }}</a>
+            </div>
+        </md-list-item>
+    </md-list>
+</md-content>
