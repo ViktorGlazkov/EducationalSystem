@@ -9,8 +9,8 @@ angular.module('project').service('projectService', ['$http', '$q', function ($h
         return $http.get(URL + '/project/' + id);
     };
 
-    var createNewProject = function (name) {
-         return $http.post(URL + '/project', {name: name});
+    var createNewProject = function (project) {
+         return $http.post(URL + '/project', project);
     };
 
     var deleteProject = function (project) {
