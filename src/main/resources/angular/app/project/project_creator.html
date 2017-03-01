@@ -1,0 +1,56 @@
+<md-dialog aria-label="List dialog">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Create new project</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="vm.cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <md-input-container>
+                    <label>Name of project</label>
+                    <input ng-model="vm.name">
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Language</label>
+                    <md-select ng-model="vm.selectedLanguage" multiple>
+                        <md-option><em>None</em></md-option>
+                        <md-option ng-repeat="language in vm.languages" ng-value="language" ng-disabled="$index === 1">
+                            {{language.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Technology</label>
+                    <md-select ng-model="vm.selectedTechnologies" multiple>
+                        <md-option><em>None</em></md-option>
+                        <md-option ng-repeat="technology in vm.selectedLanguage[0].technologies" ng-value="technology" ng-disabled="$index === 1">
+                            {{technology.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>description</label>
+                    <input ng-model="vm.description" type="text">
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button ng-click="vm.cancel()">
+                Cancel
+            </md-button>
+            <md-button ng-click="vm.create()" class="md-primary">
+                Create
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
