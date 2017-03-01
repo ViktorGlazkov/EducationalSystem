@@ -4,7 +4,7 @@ angular.module('technology').controller('technologyController',
 
             var vm = this;
             vm.getAllTechnologies = getAllTechnologies;
-            vm.showAdvanced = showAdvanced;
+            vm.createTechnology = createTechnology;
             vm.deleteTechnology = deleteTechnology;
 
             function getAllTechnologies() {
@@ -15,7 +15,7 @@ angular.module('technology').controller('technologyController',
                 );
             }
 
-            function showAdvanced(ev) {
+            function createTechnology(ev) {
                 $mdDialog.show({
                     controller: 'technologyCreatorController',
                     controllerAs: 'vm',
