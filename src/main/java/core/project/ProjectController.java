@@ -7,31 +7,32 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/projects")
 public class ProjectController {
     @Autowired
     ProjectService projectService;
 
-    @RequestMapping(value = {"/projects"}, method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public List<Project> getProjects() {
         return projectService.getProjects();
     }
 
-    @RequestMapping(value = {"/project"}, method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public void createProject(@RequestBody Project project) {
         projectService.createProject(project);
     }
 
-    @RequestMapping(value = {"/project/{id}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/{id}"}, method = RequestMethod.GET)
     public Project readProject(@PathVariable Long id) {
         return projectService.getProject(id);
     }
 
-    @RequestMapping(value = {"/project"}, method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT)
     public void updateProject(@RequestBody Project project) {
         projectService.updateProject(project);
     }
 
-    @RequestMapping(value = {"/project/{id}"}, method = RequestMethod.DELETE)
+    @RequestMapping(value = {"/{id}"}, method = RequestMethod.DELETE)
     public void deleteProject(@PathVariable Long id) {
         projectService.deleteProject(id);
     }

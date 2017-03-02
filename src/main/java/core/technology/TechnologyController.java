@@ -7,32 +7,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/technologies")
 public class TechnologyController {
     @Autowired
     TechnologyService technologyService;
 
-    @RequestMapping(value = {"/", "/technologies"}, method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public List<Technology> getTechnologies() {
         return technologyService.getTechnologies();
     }
 
-    @RequestMapping(value = {"/technology"}, method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public void createTechnology(@RequestBody Technology technology) {
         technologyService.createTechnology(technology);
     }
 
-    @RequestMapping(value = {"/technology/{id}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/{id}"}, method = RequestMethod.GET)
     public Technology readTechnology(@PathVariable Long id) {
         return technologyService.getTechnology(id);
     }
 
-    @RequestMapping(value = {"/technology"}, method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT)
     public void updateTechnology(@RequestBody Technology technology) {
         technologyService.updateTechnology(technology);
     }
 
-    @RequestMapping(value = {"/technology/{id}"}, method = RequestMethod.DELETE)
+    @RequestMapping(value = {"/{id}"}, method = RequestMethod.DELETE)
     public void deleteTechnology(@PathVariable Long id) {
         technologyService.deleteTechnology(id);
     }
