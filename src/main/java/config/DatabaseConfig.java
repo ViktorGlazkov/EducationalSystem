@@ -1,9 +1,9 @@
 package config;
 
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -14,40 +14,25 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
+@PropertySource(value = { "classpath:database.properties" })
 public class DatabaseConfig {
-
-    @Value("${jdbc.driverClassName}")
-    private String driverClassName;
-    @Value("${jdbc.url}")
-    private String url;
-    @Value("${jdbc.username}")
-    private String username;
-    @Value("${jdbc.password}")
-    private String password;
 
     @Bean
     public DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(driverClassName);
-        dataSource.setUrl(url);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
+        dataSource.setDriverClassName("jdbc.driverClassName");
+        dataSource.setUrl("jdbc.url");
+        dataSource.setUsername("jdbc.username");
+        dataSource.setPassword("jdbc.password");
         return dataSource;
     }
-
-    @Value("${hibernate.dialect}")
-    private String hibernateDialect;
-    @Value("${hibernate.show_sql}")
-    private String hibernateShowSql;
-    @Value("${hibernate.hbm2ddl.auto}")
-    private String hibernateHBM2DDLAuto;
 
     @Bean
     public Properties hibernateProperties() {
         Properties properties = new Properties();
-        properties.put("hibernate.dialect", hibernateDialect);
-        properties.put("hibernate.show_sql", hibernateShowSql);
-        properties.put("hibernate.hbm2ddl.auto", hibernateHBM2DDLAuto);
+        properties.put("hibernate.dialect", "hibernate.dialect");
+        properties.put("hibernate.show_sql", "hibernate.show_sql");
+        properties.put("hibernate.hbm2ddl.auto", "hibernate.hbm2ddl.auto");
         return properties;
     }
 
