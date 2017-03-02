@@ -1,20 +1,20 @@
 angular.module('project').service('projectService', ['$http', '$q', function ($http, $q) {
-    var URL = 'http://localhost:8080/EducationalSystem';
+    var URL = 'http://localhost:8080/EducationalSystem/api/projects';
 
     var getAllProjects = function () {
-        return $http.get(URL + '/projects');
+        return $http.get(URL);
     };
 
     var getProject = function (id) {
-        return $http.get(URL + '/project/' + id);
+        return $http.get(URL + '/' + id);
     };
 
     var createNewProject = function (project) {
-         return $http.post(URL + '/project', project);
+         return $http.post(URL, project);
     };
 
     var deleteProject = function (project) {
-        return $http.delete(URL + '/project/' + project.id);
+        return $http.delete(URL + '/' + project.id);
     };
 
     return {

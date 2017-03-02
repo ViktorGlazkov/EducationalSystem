@@ -1,21 +1,21 @@
 angular.module('language').service('languageService',
     ['$http', '$q', function ($http) {
-        var URL = 'http://localhost:8080/EducationalSystem';
+        var URL = 'http://localhost:8080/EducationalSystem/api/languages';
 
         var getAllLanguages = function () {
-            return $http.get(URL + '/languages');
+            return $http.get(URL);
         };
 
         var getLanguage = function (id) {
-            return $http.get(URL + '/language/' + id);
+            return $http.get(URL + '/' + id);
         };
 
         var createNewLanguage = function (name) {
-            return $http.post(URL + '/language', {name: name});
+            return $http.post(URL, {name: name});
         };
 
         var deleteLanguage = function (language) {
-            return $http.delete(URL + '/language/' + language.id);
+            return $http.delete(URL + '/' + language.id);
         };
 
         return {
