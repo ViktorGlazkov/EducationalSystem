@@ -42,19 +42,26 @@
     <script src="app/technology/creator/technology_creator.controller.js"></script>
 </head>
 <body ng-app='app'>
-<md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
-    <md-nav-bar md-selected-nav-item="Languages" nav-bar-aria-label="navigation links">
-        <md-nav-item md-nav-href="#/languages" name="page1">
-            Languages
-        </md-nav-item>
-        <md-nav-item md-nav-href="#/technologies" name="page2">
-            Technologies
-        </md-nav-item>
-        <md-nav-item md-nav-href="#/projects" name="page3">
-            Projects
-        </md-nav-item>
-    </md-nav-bar>
-</md-content>
+<!--<md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>-->
+<!--<md-nav-bar md-selected-nav-item="Languages" nav-bar-aria-label="navigation links">-->
+<!--<md-nav-item md-nav-href="#/languages" name="page1">-->
+<!--Languages-->
+<!--</md-nav-item>-->
+<!--<md-nav-item md-nav-href="#/technologies" name="page2">-->
+<!--Technologies-->
+<!--</md-nav-item>-->
+<!--<md-nav-item md-nav-href="#/projects" name="page3">-->
+<!--Projects-->
+<!--</md-nav-item>-->
+<!--</md-nav-bar>-->
+<!--</md-content>-->
+<div ng-controller="navigation as vm" class="container">
+    <ul class="nav nav-pills" role="tablist">
+        <li class="active"><a href="#/">home</a></li>
+        <li><a href="#/login">login</a></li>
+        <li ng-show="authenticated"><a href="" ng-click="vm.logout()">logout</a></li>
+    </ul>
+</div>
 <div ng-view></div>
 </body>
 </html>
