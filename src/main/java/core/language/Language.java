@@ -1,12 +1,9 @@
 package core.language;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.sun.istack.internal.Nullable;
 import core.project.Project;
 import core.technology.Technology;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -20,21 +17,6 @@ public class Language {
     private Set<Technology> technologies;
     @ManyToMany(mappedBy = "languages")
     private Set<Project> projects;
-
-    public Language() {
-    }
-
-    public Language(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Language(Long id, String name, Set<Technology> technologies, Set<Project> projects) {
-        this.id = id;
-        this.name = name;
-        this.technologies = technologies;
-        this.projects = projects;
-    }
 
     public Long getId() {
         return id;
@@ -52,7 +34,6 @@ public class Language {
         this.name = name;
     }
 
-
     public Set<Technology> getTechnologies() {
         return technologies;
     }
@@ -60,7 +41,6 @@ public class Language {
     public void setTechnologies(Set<Technology> technologies) {
         this.technologies = technologies;
     }
-
 
     public Set<Project> getProjects() {
         return projects;

@@ -1,11 +1,9 @@
 package core.technology;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import core.language.Language;
 import core.project.Project;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -50,7 +48,6 @@ public class Technology {
     public Language getLanguage() {
         return language;
     }
-
 
     public Set<Project> getProjects() {
         return projects;

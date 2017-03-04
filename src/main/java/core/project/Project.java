@@ -4,7 +4,6 @@ import core.language.Language;
 import core.technology.Technology;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -27,23 +26,6 @@ public class  Project {
             inverseJoinColumns = @JoinColumn(name = "technology_id", referencedColumnName = "id")
     )
     private Set<Technology> technologies;
-
-    public Project(){}
-
-    public Project(String name) {
-        this.name = name;
-    }
-
-    public Project(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
-
-    public Project(String name, String description, Set<Technology> technologies) {
-        this.name = name;
-        this.description = description;
-        this.technologies = technologies;
-    }
 
     public Long getId() {
         return id;
@@ -69,7 +51,6 @@ public class  Project {
         this.description = description;
     }
 
-
     public Set<Technology> getTechnologies() {
         return technologies;
     }
@@ -77,8 +58,6 @@ public class  Project {
     public void setTechnologies(Set<Technology> technologies) {
         this.technologies = technologies;
     }
-
-
 
     public Set<Language> getLanguages() {
         return languages;
