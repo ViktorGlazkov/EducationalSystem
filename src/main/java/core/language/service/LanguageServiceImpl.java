@@ -1,7 +1,7 @@
 package core.language.service;
 
 import core.language.Language;
-import core.language.dao.LanguageDAO;
+import core.language.LanguageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,30 +10,30 @@ import java.util.List;
 @Service
 public class LanguageServiceImpl implements LanguageService {
     @Autowired
-    LanguageDAO languageDAO;
+    LanguageRepository languageRepository;
 
     @Override
     public List<Language> getLanguages() {
-        return languageDAO.getLanguages();
+        return languageRepository.findAll();
     }
 
     @Override
     public void createLanguage(Language language) {
-        languageDAO.createLanguage(language);
+        languageRepository.save(language);
     }
 
     @Override
     public Language getLanguage(Long id) {
-        return languageDAO.getLanguage(id);
+        return languageRepository.findOne(id);
     }
 
     @Override
     public void updateLanguage(Language language) {
-        languageDAO.updateLanguage(language);
+        languageRepository.save(language);
     }
 
     @Override
     public void deleteLanguage(Long id) {
-        languageDAO.deleteLanguage(id);
+        languageRepository.delete(id);
     }
 }
