@@ -9,23 +9,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "technology")
 public class Technology {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
     private Long id;
-
     private String name;
 
     @ManyToOne
-    @JsonBackReference(value = "language-technology")
+    @JoinColumn(name = "language_id")
     private Language language;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "technologies")
-    @JsonBackReference(value = "project-technology")
-    private Set<Project> projects = new HashSet<Project>();
+    @ManyToMany(mappedBy = "languages")
+    private Set<Project> projects;
 
     public Technology() {
     }
@@ -43,13 +38,19 @@ public class Technology {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
 
+
     public Language getLanguage() {
         return language;
     }
+
 
     public Set<Project> getProjects() {
         return projects;
