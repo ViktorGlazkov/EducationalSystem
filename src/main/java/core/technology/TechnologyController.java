@@ -9,6 +9,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/technologies")
 public class TechnologyController {
+
     @Autowired
     TechnologyService technologyService;
 

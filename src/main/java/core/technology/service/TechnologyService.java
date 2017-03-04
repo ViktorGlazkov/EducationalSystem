@@ -5,6 +5,7 @@ import core.technology.Technology;
 import java.util.List;
 
 public interface TechnologyService {
+
     List<Technology> getTechnologies();
 
     void createTechnology(Technology technology);

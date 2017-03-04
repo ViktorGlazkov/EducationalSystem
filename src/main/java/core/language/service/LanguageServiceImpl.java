@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class LanguageServiceImpl implements LanguageService {
+
     @Autowired
     LanguageRepository languageRepository;
 

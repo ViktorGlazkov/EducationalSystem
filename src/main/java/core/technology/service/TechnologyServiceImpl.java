@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class TechnologyServiceImpl implements TechnologyService {
+
     @Autowired
     TechnologyRepository technologyRepository;
 

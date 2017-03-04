@@ -5,6 +5,7 @@ import core.language.Language;
 import java.util.List;
 
 public interface LanguageService {
+
     List<Language> getLanguages();
 
     void createLanguage(Language language);
