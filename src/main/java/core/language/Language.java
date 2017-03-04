@@ -4,39 +4,54 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.sun.istack.internal.Nullable;
 import core.project.Project;
 import core.technology.Technology;
-import org.codehaus.jackson.annotate.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "language")
 public class Language {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
     private Long id;
-
     private String name;
 
-    @Nullable
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "language", fetch = FetchType.EAGER)
-    @JsonManagedReference(value = "language-technology")
+    @OneToMany(mappedBy = "language", cascade = CascadeType.ALL)
     private Set<Technology> technologies;
+    @ManyToMany(mappedBy = "languages")
+    private Set<Project> projects;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy="languages")
-    @JsonBackReference(value = "project-language")
-    private Set<Project> projects = new HashSet<Project>();
+    public Language() {
+    }
+
+    public Language(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Language(Long id, String name, Set<Technology> technologies, Set<Project> projects) {
+        this.id = id;
+        this.name = name;
+        this.technologies = technologies;
+        this.projects = projects;
+    }
 
     public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 
     public Set<Technology> getTechnologies() {
         return technologies;
@@ -45,6 +60,7 @@ public class Language {
     public void setTechnologies(Set<Technology> technologies) {
         this.technologies = technologies;
     }
+
 
     public Set<Project> getProjects() {
         return projects;
