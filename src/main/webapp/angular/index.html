@@ -24,6 +24,14 @@
 
     <script src="app/app.js"></script>
 
+    <script src="app/auth/auth.js"></script>
+
+    <script src="app/home/home.module.js"></script>
+    <script src="app/home/home.controller.js"></script>
+
+    <script src="app/navigation/navigation.module.js"></script>
+    <script src="app/navigation/navigation.controller.js"></script>
+
     <script src="app/project/project.module.js"></script>
     <script src="app/project/project.controller.js"></script>
     <script src="app/project/project.service.js"></script>
@@ -42,20 +50,7 @@
     <script src="app/technology/creator/technology_creator.controller.js"></script>
 </head>
 <body ng-app='app'>
-<!--<md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>-->
-<!--<md-nav-bar md-selected-nav-item="Languages" nav-bar-aria-label="navigation links">-->
-<!--<md-nav-item md-nav-href="#/languages" name="page1">-->
-<!--Languages-->
-<!--</md-nav-item>-->
-<!--<md-nav-item md-nav-href="#/technologies" name="page2">-->
-<!--Technologies-->
-<!--</md-nav-item>-->
-<!--<md-nav-item md-nav-href="#/projects" name="page3">-->
-<!--Projects-->
-<!--</md-nav-item>-->
-<!--</md-nav-bar>-->
-<!--</md-content>-->
-<div ng-controller="navigation as vm" class="container">
+<div ng-controller="navigationController as vm" class="container" ng-cloak class="ng-cloak">
     <ul class="nav nav-pills" role="tablist">
         <li class="active"><a href="#/">home</a></li>
         <li><a href="#/login">login</a></li>
