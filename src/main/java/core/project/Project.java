@@ -8,6 +8,7 @@ import java.util.Set;
 
 @Entity
 public class  Project {
+
     @Id
     private Long id;
     private String name;
