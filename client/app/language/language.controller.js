@@ -3,6 +3,8 @@ angular.module('language').controller('languageController',
         function (languageService) {
 
             var vm = this;
+            vm.languages = [];
+
             vm.getAllLanguages = getAllLanguages;
             vm.createNewLanguage = createNewLanguage;
             vm.deleteLanguage = deleteLanguage;
