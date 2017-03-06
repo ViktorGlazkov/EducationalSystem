@@ -4,17 +4,14 @@
     <meta charset="utf-8" name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <base href='/'>
 
-    <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <script src="bower_components/underscore/underscore.js"></script>
 
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-messages/angular-messages.js"></script>
@@ -24,13 +21,11 @@
 
     <script src="app/app.js"></script>
 
-    <script src="app/auth/auth.js"></script>
-
-    <script src="app/home/home.module.js"></script>
-    <script src="app/home/home.controller.js"></script>
-
-    <script src="app/navigation/navigation.module.js"></script>
-    <script src="app/navigation/navigation.controller.js"></script>
+    <script src="app/security/security.module.js"></script>
+    <script src="app/security/security.controller.js"></script>
+    <script src="app/security/cookies.service.js"></script>
+    <script src="app/security/csrf.service.js"></script>
+    <script src="app/security/login.js"></script>
 
     <script src="app/project/project.module.js"></script>
     <script src="app/project/project.controller.js"></script>
@@ -50,13 +45,7 @@
     <script src="app/technology/creator/technology_creator.controller.js"></script>
 </head>
 <body ng-app='app'>
-<div ng-controller="navigationController as vm" class="container" ng-cloak class="ng-cloak">
-    <ul class="nav nav-pills" role="tablist">
-        <li class="active"><a href="#/">home</a></li>
-        <li><a href="#/login">login</a></li>
-        <li ng-show="authenticated"><a href="" ng-click="vm.logout()">logout</a></li>
-    </ul>
-</div>
+
 <div ng-view></div>
 </body>
 </html>
