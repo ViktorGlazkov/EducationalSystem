@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/technologies")
+@RequestMapping("/api/technology")
 public class TechnologyController {
 
     @Autowired

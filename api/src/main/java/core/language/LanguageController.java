@@ -2,20 +2,22 @@ package core.language;
 
 import core.language.service.LanguageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/languages")
+@RequestMapping("/api/language")
 public class LanguageController {
 
     @Autowired
     LanguageService languageService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Language> getLanguages() {
-        return languageService.getLanguages();
+    public ResponseEntity getLanguages() {
+        return new ResponseEntity(languageService.getLanguages(), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST)
