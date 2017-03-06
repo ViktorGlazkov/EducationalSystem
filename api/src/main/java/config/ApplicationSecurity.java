@@ -2,6 +2,7 @@ package config;
 
 import config.cors.CORSFilter;
 import config.csrf.CsrfTokenResponseCookieBindingFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
@@ -18,20 +19,18 @@ import org.springframework.security.web.util.matcher.AndRequestMatcher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.NegatedRequestMatcher;
 
-import javax.annotation.Resource;
-
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 
-    @Resource
+    @Autowired
     private AuthenticationEntryPoint authenticationEntryPoint;
-    @Resource
+    @Autowired
     private AuthenticationFailureHandler authenticationFailureHandler;
-    @Resource
+    @Autowired
     private AuthenticationSuccessHandler authenticationSuccessHandler;
-    @Resource
+    @Autowired
     private CORSFilter corsFilter;
-    @Resource
+    @Autowired
     private LogoutSuccessHandler logoutSuccessHandler;
 
     @Override
@@ -44,37 +43,29 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/*/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/**").permitAll()
-                .antMatchers("/login", "/rest/open/**").permitAll()
+                .antMatchers("/login", "/api/**").permitAll()
                 .antMatchers("/logout", "/rest/**").authenticated();
 
-        // Handlers and entry points
         http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
         http.formLogin().successHandler(authenticationSuccessHandler);
         http.formLogin().failureHandler(authenticationFailureHandler);
 
-        // Logout
         http.logout().logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler);
 
-        // CORS
         http.addFilterBefore(corsFilter, ChannelProcessingFilter.class);
 
-        // CSRF
         http.csrf().requireCsrfProtectionMatcher(
                 new AndRequestMatcher(
-                        // Apply CSRF protection to all paths that do NOT match the ones below
-
-                        // We disable CSRF at login/logout, but only for OPTIONS methods
                         new NegatedRequestMatcher(new AntPathRequestMatcher("/login*/**", HttpMethod.OPTIONS.toString())),
                         new NegatedRequestMatcher(new AntPathRequestMatcher("/logout*/**", HttpMethod.OPTIONS.toString())),
 
-                        new NegatedRequestMatcher(new AntPathRequestMatcher("/rest*/**", HttpMethod.GET.toString())),
-                        new NegatedRequestMatcher(new AntPathRequestMatcher("/rest*/**", HttpMethod.HEAD.toString())),
-                        new NegatedRequestMatcher(new AntPathRequestMatcher("/rest*/**", HttpMethod.OPTIONS.toString())),
-                        new NegatedRequestMatcher(new AntPathRequestMatcher("/rest*/**", HttpMethod.TRACE.toString())),
-                        new NegatedRequestMatcher(new AntPathRequestMatcher("/rest/open*/**"))
+                        new NegatedRequestMatcher(new AntPathRequestMatcher("/api*/**", HttpMethod.GET.toString())),
+                        new NegatedRequestMatcher(new AntPathRequestMatcher("/api*/**", HttpMethod.HEAD.toString())),
+                        new NegatedRequestMatcher(new AntPathRequestMatcher("/api*/**", HttpMethod.OPTIONS.toString())),
+                        new NegatedRequestMatcher(new AntPathRequestMatcher("/api*/**", HttpMethod.TRACE.toString()))
+                      //  new NegatedRequestMatcher(new AntPathRequestMatcher("/api/**/**"))
                 )
         );
-        http.addFilterAfter(new CsrfTokenResponseCookieBindingFilter(), CsrfFilter.class); // CSRF tokens handling
+        http.addFilterAfter(new CsrfTokenResponseCookieBindingFilter(), CsrfFilter.class);
     }
 }
