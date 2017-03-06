@@ -1,5 +1,5 @@
 angular.module('project').service('projectService', ['$http', '$q', function ($http, $q) {
-    var URL = 'http://localhost:8080/EducationalSystem/api/projects';
+    var URL = 'http://localhost:8080/api/project';
 
     var getAllProjects = function () {
         return $http.get(URL);

@@ -3,6 +3,8 @@ angular.module('project').controller('projectController',
         function (projectService, $mdDialog) {
 
     var vm = this;
+    vm.projects = [];
+
     vm.getAllProjects = getAllProjects;
     vm.createProject = createProject;
     vm.deleteProject = deleteProject;

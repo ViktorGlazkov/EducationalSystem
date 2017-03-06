@@ -2,7 +2,7 @@ angular.module('project', ['ngRoute'])
     .config(['$routeProvider',
         function ($routeProvider) {
             $routeProvider
-                .when('/projects', {
+                .when('/project', {
                     templateUrl: 'app/project/project_list.html',
                     controller: 'projectController',
                     controllerAs: 'vm'
