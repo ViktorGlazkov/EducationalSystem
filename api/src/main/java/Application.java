@@ -1,4 +1,5 @@
-import config.ApplicationSecurity;
+
+import config.cors.CORSFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -16,8 +17,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class Application {
 
     @Bean
-    public WebSecurityConfigurerAdapter webSecurityConfigurerAdapter() {
-        return new ApplicationSecurity();
+    public CORSFilter corsFilter() {
+        return new CORSFilter();
     }
 
     public static void main(String[] args) {
