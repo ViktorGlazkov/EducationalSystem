@@ -51,21 +51,17 @@ angular.module('security').factory('LoginService', function ($http, $resource, C
 
     var logout = function(successHandler, errorHandler) {
 
-        // Obtain a CSRF token
         logoutResources.options().$promise.then(function (response) {
             console.log('Obtained a CSRF token in a cookie', response);
 
-            // Extract the CSRF token
             var csrfToken = CookiesService.getFromDocument($http.defaults.xsrfCookieName);
             console.log('Extracted the CSRF token from the cookie', csrfToken);
 
-            // Prepare the headers
             var headers = {
                 'Content-Type': 'application/x-www-form-urlencoded'
             };
             headers[$http.defaults.xsrfHeaderName] = csrfToken;
 
-            // Post the credentials for logging out
             $http.post('http://localhost:8080/logout', '', {
                 headers: headers
             })
@@ -76,7 +72,6 @@ angular.module('security').factory('LoginService', function ($http, $resource, C
                         console.error('The obtained CSRF token was either missing or invalid. Have you turned on your cookies?');
 
                     } else {
-                        // Nope, the error is due to something else. Run the error handler...
                         errorHandler(data, status, headers, config);
                     }
                 });
