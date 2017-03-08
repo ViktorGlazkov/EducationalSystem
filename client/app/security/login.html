@@ -3,19 +3,3 @@
 <input ng-model="vm.credentials.password" placeholder="password">
 <button ng-click="vm.login()">Login!</button>
 <button ng-click="vm.logout()">Logout...</button>
-<br/>
-<br/>
-<hr/>
-<h3>Calling open (non-secured) services</h3>
-<button ng-click="vm.getOpenGreetings()">Get greetings</button>
- {{vm.greetings.open.getResult}}<br/>
-<input ng-model="vm.greetings.open.postValue"/>
-<button ng-click="vm.postOpenGreetings()">Post greetings</button>
-<br/>
-<hr/>
-<h3>Calling secure services</h3>
-<button ng-click="vm.getSecureGreetings()">Get secure greetings</button>
- {{vm.greetings.secure.getResult}}<br/>
-<input ng-model="vm.greetings.secure.postValue"/>
-<button ng-click="vm.postSecureGreetings()">Post secure greetings</button>
-<br/>
