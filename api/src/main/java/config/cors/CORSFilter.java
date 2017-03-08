@@ -1,6 +1,5 @@
 package config.cors;
 
-import config.csrf.CSRF;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -17,7 +16,7 @@ import java.util.List;
 public class CORSFilter implements Filter {
 
     // This is to be replaced with a list of domains allowed to access the server
-    private final List<String> allowedOrigins = Arrays.asList("http://localhost:8080", "http://127.0.0.1:8080");
+    private final List<String> allowedOrigins = Arrays.asList("http://localhost:3000", "http://localhost:8080", "http://127.0.0.1:8080");
 
     public void destroy() {
     }
@@ -45,7 +44,7 @@ public class CORSFilter implements Filter {
 
             // Access-Control-Allow-Headers
             response.setHeader("Access-Control-Allow-Headers",
-                    "Origin, X-Requested-With, Content-Type, Accept, " + CSRF.REQUEST_HEADER_NAME);
+                    "Origin, X-Requested-With, Content-Type, Accept, X-CSRF-TOKEN");
         }
 
         chain.doFilter(req, res);
