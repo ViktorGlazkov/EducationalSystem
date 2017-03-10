@@ -3,10 +3,8 @@ configure.$inject = ['$routeProvider'];
 
 function configure($routeProvider) {
     $routeProvider
-        .when('/languages', {
-            templateUrl: 'app/language/list/language_list.html',
-            controller: 'LanguageListController',
-            controllerAs: 'vm'
+        .when('/language', {
+            template: '<my-list ctrl="LanguageListController""></my-list>'
         })
         .when('/language/:id', {
             templateUrl: 'app/language/details/language_details.html',

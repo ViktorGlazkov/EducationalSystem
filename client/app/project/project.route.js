@@ -4,9 +4,7 @@ configure.$inject = ['$routeProvider'];
 function configure($routeProvider) {
     $routeProvider
         .when('/project', {
-            templateUrl: 'app/project/list/project_list.html',
-            controller: 'ProjectListController',
-            controllerAs: 'vm'
+            template: '<my-list ctrl="ProjectListController""></my-list>'
         })
         .when('/project/:id', {
             templateUrl: 'app/project/details/project_details.html',

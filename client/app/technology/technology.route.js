@@ -3,9 +3,7 @@ configure.$inject = ['$routeProvider'];
 function configure($routeProvider) {
     $routeProvider
         .when('/technology', {
-            templateUrl: 'app/technology/list/technology_list.html',
-            controller: 'TechnologyListController',
-            controllerAs: 'vm'
+            template: '<my-list ctrl="TechnologyListController""></my-list>'
         })
         .when('/technology/:id', {
             templateUrl: 'app/technology/details/technology_details.html',
