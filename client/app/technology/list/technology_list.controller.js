@@ -19,7 +19,11 @@ function TechnologyListController(CRUDService, $mdDialog) {
     }
 
     function createTechnology(ev) {
-        $mdDialog.show({
+        showMdDialog(ev).then(vm.getAllTechnologies);
+    }
+
+    function showMdDialog(ev) {
+        return $mdDialog.show({
             controller: 'TechnologyCreatorController',
             controllerAs: 'vm',
             templateUrl: 'app/technology/creator/technology_creator.html',
@@ -27,7 +31,6 @@ function TechnologyListController(CRUDService, $mdDialog) {
             targetEvent: ev,
             clickOutsideToClose: true
         })
-            .then(vm.getAllTechnologies);
     }
 
     function deleteTechnology(technology) {
