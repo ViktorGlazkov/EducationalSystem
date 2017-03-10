@@ -1,0 +1,11 @@
+<md-content>
+    <div class="well" ng-repeat="item in vm.items">
+        <a href="/#/{{vm.resource}}/{{item.id}}" class="col-md-8">{{item.name}}</a>
+        <a>{{item.id}}</a>
+        <button type="button" class="btn btn-danger col-md-3" ng-click="vm.delete(item)">Remove</button>
+    </div>
+
+    <md-button class="md-primary md-raised" ng-click="vm.create($event)">
+        Add {{vm.resource}}
+    </md-button>
+</md-content>
