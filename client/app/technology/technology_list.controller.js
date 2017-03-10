@@ -4,22 +4,24 @@ TechnologyListController.$inject = ['CRUDService', '$mdDialog'];
 function TechnologyListController(CRUDService, $mdDialog) {
 
     var vm = this;
-    vm.getAllTechnologies = getAllTechnologies;
-    vm.createTechnology = createTechnology;
-    vm.deleteTechnology = deleteTechnology;
+    vm.items = [];
 
-    vm.getAllTechnologies();
+    vm.getAll = getAll;
+    vm.create = create;
+    vm.deleteOne = deleteOne;
 
-    function getAllTechnologies() {
-        CRUDService.getAll('technology').then(setTechnologies);
+    vm.getAll();
+
+    function getAll() {
+        CRUDService.getAll('technology').then(setItems);
     }
 
-    function setTechnologies(responce) {
-        vm.technologies = responce.data;
+    function setItems(responce) {
+        vm.items = responce.data;
     }
 
-    function createTechnology(ev) {
-        showMdDialog(ev).then(vm.getAllTechnologies);
+    function create(ev) {
+        showMdDialog(ev).then(vm.getAll);
     }
 
     function showMdDialog(ev) {
@@ -33,7 +35,7 @@ function TechnologyListController(CRUDService, $mdDialog) {
         })
     }
 
-    function deleteTechnology(technology) {
-        CRUDService.deleteOne('technology', technology.id).then(vm.getAllTechnologies);
+    function deleteOne(technology) {
+        CRUDService.deleteOne('technology', technology.id).then(vm.getAll);
     }
 }

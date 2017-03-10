@@ -2,27 +2,26 @@ angular.module('project').controller('ProjectListController', ProjectListControl
 ProjectListController.$inject = ['CRUDService', '$mdDialog'];
 
 function ProjectListController(CRUDService, $mdDialog) {
-
     var vm = this;
-    vm.projects = [];
+    vm.items = [];
 
-    vm.getAllProjects = getAllProjects;
-    vm.createProject = createProject;
-    vm.deleteProject = deleteProject;
+    vm.getAll = getAll;
+    vm.create = create;
+    vm.deleteOne = deleteOne;
 
-    vm.getAllProjects();
+    vm.getAll();
 
-    function getAllProjects() {
+    function getAll() {
         CRUDService.getAll('project').then(setProjects);
     }
 
     function setProjects(responce) {
-        vm.projects = responce.data;
+        vm.items = responce.data;
     }
 
-    function createProject(ev) {
+    function create(ev) {
         showMdDialog(ev).then(function (project) {
-            CRUDService.create('project', project).then(vm.getAllProjects);
+            CRUDService.create('project', project).then(vm.getAll);
         });
     }
 
@@ -37,7 +36,7 @@ function ProjectListController(CRUDService, $mdDialog) {
         })
     }
 
-    function deleteProject(project) {
-        CRUDService.deleteOne('project', project.id).then(vm.getAllProjects);
+    function deleteOne(project) {
+        CRUDService.deleteOne('project', project.id).then(vm.getAll);
     }
 }
