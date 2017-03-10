@@ -21,7 +21,13 @@ function ProjectListController(CRUDService, $mdDialog) {
     }
 
     function createProject(ev) {
-        $mdDialog.show({
+        showMdDialog(ev).then(function (project) {
+            CRUDService.create('project', project).then(vm.getAllProjects);
+        });
+    }
+
+    function showMdDialog(ev) {
+        return $mdDialog.show({
             controller: 'ProjectCreatorController',
             controllerAs: 'vm',
             templateUrl: 'app/project/creator/project_creator.html',
@@ -29,10 +35,6 @@ function ProjectListController(CRUDService, $mdDialog) {
             targetEvent: ev,
             clickOutsideToClose: true
         })
-            .then(function (project) {
-                CRUDService.create('project', project).then(vm.getAllProjects);
-            }, function () {
-            });
     }
 
     function deleteProject(project) {
