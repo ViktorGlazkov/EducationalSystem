@@ -5,12 +5,17 @@ function SecurityController(SecurityService) {
     var vm = this;
     vm.user = null;
 
+    vm.login = login;
     vm.logout = logout;
 
     getUser();
+    
+    function login() {
+        SecurityService.login().then(setUser);
+    }
 
     function getUser() {
-        SecurityService.getUser().then(setUser)
+        SecurityService.getUser().then(setUser);
     }
 
     function logout() {
