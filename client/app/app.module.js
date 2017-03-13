@@ -1,6 +1,5 @@
 angular.module('app', [
-    'ngRoute',
-    'ngResource',
+    'ui.router',
     'ngMaterial',
     'security',
     'project', 'language', 'technology'
