@@ -9,8 +9,7 @@
     <script src="bower_components/underscore/underscore.js"></script>
 
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -47,6 +46,11 @@
     <script src="app/technology/creator/technology_creator.controller.js"></script>
 </head>
 <body ng-app='app'>
-<div ng-view></div>
+<nav>
+    <md-button ui-sref="projects" ui-sref-active="active">project</md-button>
+    <md-button ui-sref="languages" ui-sref-active="active">language</md-button>
+    <md-button ui-sref="technologies" ui-sref-active="active">technology</md-button>
+</nav>
+<div ui-view></div>
 </body>
 </html>
