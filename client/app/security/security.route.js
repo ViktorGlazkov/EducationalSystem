@@ -1,9 +1,10 @@
 angular.module('security').config(configure);
-configure.$inject = ['$routeProvider'];
+configure.$inject = ['$stateProvider'];
 
-function configure($routeProvider) {
-    $routeProvider
-        .when('/', {
+function configure($stateProvider) {
+    $stateProvider
+        .state('login', {
+            url: '/',
             templateUrl: 'app/security/security.html',
             controller: 'SecurityController',
             controllerAs: 'vm'
