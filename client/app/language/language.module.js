@@ -1,1 +1,1 @@
-angular.module('language', ['ngRoute']);
+angular.module('language', []);

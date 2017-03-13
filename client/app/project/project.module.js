@@ -1,1 +1,1 @@
-angular.module('project', ['ngRoute']);
+angular.module('project', []);

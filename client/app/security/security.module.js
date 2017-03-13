@@ -1,3 +1,1 @@
-angular.module('security', [
-    'ngRoute'
-]);
+angular.module('security', []);

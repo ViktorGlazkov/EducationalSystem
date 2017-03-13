@@ -1,1 +1,1 @@
-angular.module('technology', ['ngRoute', 'ngMaterial', 'ngMessages', 'material.svgAssetsCache']);
+angular.module('technology', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache']);
