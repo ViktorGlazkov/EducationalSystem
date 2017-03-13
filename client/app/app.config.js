@@ -1,7 +1,8 @@
 angular.module('app').config(configure);
-configure.$inject = ['$mdThemingProvider', '$httpProvider'];
+configure.$inject = ['$httpProvider', '$locationProvider'];
 
-function configure($mdThemingProvider, $httpProvider) {
-    $mdThemingProvider.theme('default').dark();
+function configure($httpProvider, $locationProvider) {
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+    $httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
+    $locationProvider.html5Mode(true);
 }
