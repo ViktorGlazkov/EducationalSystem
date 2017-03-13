@@ -1,29 +1,25 @@
-spring.profiles.active: dev
----
 # Spring Boot dev configuration
 spring:
+  profiles.active: prod
   jpa:
     show-sql: true
     hibernate.ddl-auto: update
     properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
   datasource:
+        username: root
+        password: root
+        driver-class-name: com.mysql.jdbc.Driver
+---
+# dev datasource configuration
+spring:
+  datasource:
       url: dev_schema
-      username: root
-      password: root
-      driver-class-name: com.mysql.jdbc.Driver
   profiles: dev
 ---
-# Spring Boot prod configuration
+# prod datasource configuration
 spring:
-  jpa:
-    show-sql: true
-    hibernate.ddl-auto: create
-    properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
   datasource:
       url: prod_schema
-      username: root
-      password: root
-      driver-class-name: com.mysql.jdbc.Driver
   profiles: prod
 ---
 # Spring Security configuration
