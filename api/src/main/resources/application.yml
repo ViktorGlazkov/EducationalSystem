@@ -1,17 +1,31 @@
-# Spring Boot configuration
+spring.profiles.active: dev
+---
+# Spring Boot dev configuration
 spring:
-  profiles:
-    active: google
   jpa:
     show-sql: true
     hibernate.ddl-auto: update
     properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
   datasource:
-      url: jdbc:mysql://localhost/educational_system
+      url: dev_schema
       username: root
       password: root
       driver-class-name: com.mysql.jdbc.Driver
-
+  profiles: dev
+---
+# Spring Boot prod configuration
+spring:
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: create
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+  datasource:
+      url: prod_schema
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+  profiles: prod
+---
 # Spring Security configuration
 security:
   oauth2:
@@ -31,4 +45,5 @@ security:
 # Server configuration
 server:
  port: 8080
+
 
