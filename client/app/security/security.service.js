@@ -11,9 +11,9 @@ function SecurityService($http, $q) {
     return service;
 
     function login() {
-        return $http.get(URL + 'google/login');
+        return $http.get(URL + '/login');
     }
-    
+
     function getUser() {
         return $http.get(URL + 'user');
     }
