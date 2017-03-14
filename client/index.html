@@ -27,6 +27,7 @@
     <script src="app/security/security.route.js"></script>
     <script src="app/security/security.controller.js"></script>
     <script src="app/security/security.service.js"></script>
+    <script src="app/security/token.service.js"></script>
 
     <script src="app/project/project.module.js"></script>
     <script src="app/project/project.route.js"></script>
@@ -47,6 +48,7 @@
 </head>
 <body ng-app='app'>
 <nav>
+    <md-button ui-sref="login" ui-sref-active="active">home</md-button>
     <md-button ui-sref="projects" ui-sref-active="active">project</md-button>
     <md-button ui-sref="languages" ui-sref-active="active">language</md-button>
     <md-button ui-sref="technologies" ui-sref-active="active">technology</md-button>
