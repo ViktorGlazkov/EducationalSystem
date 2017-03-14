@@ -44,10 +44,11 @@ public class OAuthSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/**.html", "/**.js").permitAll()
                 .anyRequest().fullyAuthenticated()
                 .and()
-                .logout().logoutSuccessUrl("/").permitAll()
+                .httpBasic().disable()
+                .logout().logoutUrl("/api/logout").deleteCookies("JSESSIONID")
+                .logoutSuccessUrl("/").permitAll()
                 .and()
                 .addFilterAt(filter(), BasicAuthenticationFilter.class)
                 .csrf()
@@ -58,7 +59,7 @@ public class OAuthSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private OAuth2ClientAuthenticationProcessingFilter filter() {
         OAuth2ClientAuthenticationProcessingFilter oAuth2Filter =
-                new OAuth2ClientAuthenticationProcessingFilter("/api/google/login");
+                new OAuth2ClientAuthenticationProcessingFilter("/api/login");
 
         OAuth2RestTemplate oAuth2RestTemplate =
                 new OAuth2RestTemplate(authorizationCodeResourceDetails, oauth2ClientContext);
