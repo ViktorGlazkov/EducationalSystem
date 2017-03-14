@@ -1,6 +1,6 @@
 angular.module('app', [
     'ui.router',
-    'ngMaterial',
+    'ngMaterial', 'ngCookies',
     'security',
     'project', 'language', 'technology'
 ]);
