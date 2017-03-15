@@ -14,7 +14,11 @@ import java.util.List;
 
 public class CORSFilter implements Filter {
 
-    private final List<String> allowedOrigins = Arrays.asList("http://localhost:3000", "http://localhost:8181", "http://127.0.0.1:8181");
+    private final List<String> allowedOrigins = Arrays.asList(
+            "http://localhost:3000",
+            "http://localhost:8181",
+            "http://127.0.0.1:8181",
+            "https://accounts.google.com");
 
     public void destroy() {
     }
@@ -25,13 +29,10 @@ public class CORSFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
 
         String origin = request.getHeader("Origin");
-        response.setHeader("Access-Control-Allow-Origin", allowedOrigins.contains(origin) ? origin : "");
-        response.setHeader("Vary", "Origin");
-        response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE");
-        response.setHeader("Access-Control-Allow-Headers",
-                "Authorization, X-Requested-With, Content-Type, Accept, X-CSRF-TOKEN");
+        response.setHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Accept, Origin" +
+                "x-requested-with, origin, authorization,  client-security-toke");
 
         chain.doFilter(req, res);
     }
