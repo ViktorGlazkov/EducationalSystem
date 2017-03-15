@@ -1,7 +1,7 @@
 angular.module('security').controller('SecurityController', SecurityController);
 SecurityController.$inject = ['SecurityService', '$location', '$cookies', '$http', '$window'];
 
-function SecurityController(SecurityService, $location, $cookies, $http, $window) {
+function SecurityController(SecurityService) {
     var vm = this;
     vm.user = null;
 
@@ -31,15 +31,12 @@ function SecurityController(SecurityService, $location, $cookies, $http, $window
         vm.user = null;
     }
 
-    function obtainAccessToken(data) {
-        $http.defaults.headers.common.Authorization = 'Bearer ' + data.data.access_token;
-        var expireDate = new Date(new Date().getTime() + (1000 * data.data.expires_in));
-        $cookies.put("access_token", data.data.access_token, {'expires': expireDate});
-        $window.location.href = "index";
+    function obtainAccessToken(data, status, headers, config) {
+        console.info('The user has been successfully logged in! ', data, status, headers, config);
     }
 
 
-    function errorHandler(error){
-        console.log(error);
+    function errorHandler(data, status, headers, config){
+        console.error('Something went wrong while trying to login... ', data, status, headers, config);
     }
 }
