@@ -1,8 +1,9 @@
 angular.module('security').service('SecurityService', SecurityService);
-SecurityService.$inject = ['$http', '$q'];
+SecurityService.$inject = ['$http'];
 
-function SecurityService($http, $q) {
-    var URL = 'http://localhost:8080/api/';
+function SecurityService($http) {
+
+    var URL = 'http://localhost:8080/';
     var service = {
         login: login,
         getUser: getUser,
@@ -11,11 +12,11 @@ function SecurityService($http, $q) {
     return service;
 
     function login() {
-        return $http.get(URL + '/login');
+        return $http.post(URL + 'login');
     }
 
     function getUser() {
-        return $http.get(URL + 'user');
+        return $http.get(URL + 'api/user');
     }
 
     function logout() {
