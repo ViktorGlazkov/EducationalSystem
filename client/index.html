@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8" name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8">
     <base href='/'>
 
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
@@ -15,12 +15,15 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
-
+    <script src="bower_components/angular-google-client/dist/angular-google-client.js"></script>
+    <script src="bower_components/angular-google-gapi/dist/angular-google-gapi.js"></script>
     <script src="bower_components/svg-assets-cache.js/svg-assets-cache.js"></script>
 
     <script src="app/app.module.js"></script>
     <script src="app/app.config.js"></script>
     <script src="app/crud.service.js"></script>
+    <script src="app/app.constants.js"></script>
+    <script src="app/response-observer.service.js"></script>
     <script src="app/list.directive.js"></script>
 
     <script src="app/security/security.module.js"></script>
@@ -28,6 +31,8 @@
     <script src="app/security/security.controller.js"></script>
     <script src="app/security/security.service.js"></script>
     <script src="app/security/token.service.js"></script>
+    <script src="app/security/Cookies.js"></script>
+    <script src="app/security/Csrf.js"></script>
 
     <script src="app/project/project.module.js"></script>
     <script src="app/project/project.route.js"></script>
@@ -45,6 +50,7 @@
     <script src="app/technology/technology_list.controller.js"></script>
     <script src="app/technology/details/technology_details.controller.js"></script>
     <script src="app/technology/creator/technology_creator.controller.js"></script>
+
 </head>
 <body ng-app='app'>
 <nav>
