@@ -30,9 +30,11 @@ public class CORSFilter implements Filter {
 
         String origin = request.getHeader("Origin");
         response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Expose-Headers", "X-Requested-With, Content-Type, Accept, Origin" +
+                "x-requested-with, origin, authorization, Location,  client-security-token");
         response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE");
         response.setHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Accept, Origin" +
-                "x-requested-with, origin, authorization,  client-security-toke");
+                "x-requested-with, origin, authorization, Location,  client-security-token");
 
         chain.doFilter(req, res);
     }
